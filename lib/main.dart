@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   Future<List<Question>> loadQuestions() async {
-    final String jsonString = await rootBundle.loadString('assets/questions.json');
+    final String jsonString = await rootBundle.loadString('questions.json');
     final List<dynamic> jsonData = json.decode(jsonString);
     return jsonData.map((e) => Question.fromJson(e)).toList();
   }
