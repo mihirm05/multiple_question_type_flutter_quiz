@@ -1,29 +1,62 @@
 import 'package:flutter/material.dart';
 import 'question.dart';
 
-class QuizProvider with ChangeNotifier {
-  final List<Question> _questions;
-  int _currentIndex = 0;
-  int _score = 0;
+class QuizProvider extends ChangeNotifier {
+  final List<Question> allQuestions;
+  final List<Question> askedQuestions = [];
+  int score = 0;
 
-  QuizProvider(this._questions);
+  Question? _currentQuestion;
 
-  Question get currentQuestion => _questions[_currentIndex];
-  int get score => _score;
-  int get totalQuestions => _questions.length;
-  bool get isFinished => _currentIndex >= _questions.length;
+  Question get currentQuestion => _currentQuestion!;
+  bool get isFinished => _currentQuestion == null && askedQuestions.length == allQuestions.length;
 
-  void answer(String selectedAnswer) {
-    if (selectedAnswer == currentQuestion.correctAnswer) {
-      _score++;
+  QuizProvider(this.allQuestions) {
+    _pickNextQuestion();
+  }
+
+  void answer(String selected) {
+    if (_currentQuestion == null) return;
+
+    if (selected == _currentQuestion!.correctAnswer) {
+      score++;
     }
-    _currentIndex++;
+
+    askedQuestions.add(_currentQuestion!);
+    _pickNextQuestion();
     notifyListeners();
+  }
+
+  void _pickNextQuestion() {
+    List<Question> remaining = allQuestions.toSet().difference(askedQuestions.toSet()).toList();
+
+    if (remaining.isEmpty) {
+      _currentQuestion = null;
+      return;
+    }
+
+    // Adaptive logic based on performance
+    Difficulty nextLevel;
+    double accuracy = askedQuestions.isEmpty ? 0 : score / askedQuestions.length;
+
+    if (accuracy >= 0.8) {
+      nextLevel = Difficulty.hard;
+    } else if (accuracy >= 0.5) {
+      nextLevel = Difficulty.medium;
+    } else {
+      nextLevel = Difficulty.easy;
+    }
+
+    List<Question> filtered = remaining.where((q) => q.difficulty == nextLevel).toList();
+    _currentQuestion = (filtered.isNotEmpty ? filtered : remaining).first;
   }
 
   void reset() {
-    _currentIndex = 0;
-    _score = 0;
+    score = 0;
+    askedQuestions.clear();
+    _pickNextQuestion();
     notifyListeners();
   }
+
+  int get totalQuestions => allQuestions.length;
 }

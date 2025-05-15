@@ -47,69 +47,49 @@ class QuizScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final quiz = Provider.of<QuizProvider>(context);
-
-    if (quiz.isFinished) {
-      return Scaffold(
-        appBar: AppBar(title: const Text('Quiz Finished')),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Your score: ${quiz.score}/${quiz.totalQuestions}',
-                  style: const TextStyle(fontSize: 20)),
-              const SizedBox(height: 20),
-              ElevatedButton(
-                onPressed: quiz.reset,
-                child: const Text('Restart Quiz'),
-              ),
-            ],
-          ),
-        ),
-      );
-    }
-
-    final question = quiz.currentQuestion;
-
     return Scaffold(
-      appBar: AppBar(title: const Text('Quiz')),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            if (question.type == QuestionType.imageBased &&
-                question.imageUrl != null)
-              Image.network(question.imageUrl!, height: 200),
-            const SizedBox(height: 16),
-            Text(
-              question.questionText,
-              style: const TextStyle(fontSize: 20),
+      appBar: AppBar(title: const Text('Adaptive Quiz')),
+      body: Consumer<QuizProvider>(
+        builder: (context, quiz, child) {
+          if (quiz.isFinished) {
+            return Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Finished! Score: ${quiz.score}/${quiz.totalQuestions}'),
+                  ElevatedButton(
+                    onPressed: () => quiz.reset(),
+                    child: const Text('Restart'),
+                  ),
+                ],
+              ),
+            );
+          }
+
+          final question = quiz.currentQuestion;
+
+          return Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                if (question.imageUrl != null)
+                  Image.network(question.imageUrl!, height: 200),
+                const SizedBox(height: 20),
+                Text(
+                  question.questionText,
+                  style: const TextStyle(fontSize: 20),
+                ),
+                const SizedBox(height: 20),
+                ...question.options.map((option) => ElevatedButton(
+                      onPressed: () => quiz.answer(option),
+                      child: Text(option),
+                    )),
+              ],
             ),
-            const SizedBox(height: 16),
-            ..._buildOptions(question, quiz),
-          ],
-        ),
+          );
+        },
       ),
     );
-  }
-
-  List<Widget> _buildOptions(Question question, QuizProvider quiz) {
-  
-    if (question.type == QuestionType.trueFalse) {
-      return ['True', 'False'].map((option) {
-        return ElevatedButton(
-          onPressed: () => quiz.answer(option),
-          child: Text(option),
-        );
-      }).toList();
-    }
-
-
-    return question.options.map((option) {
-      return ElevatedButton(
-        onPressed: () => quiz.answer(option),
-        child: Text(option),
-      );
-    }).toList();
   }
 }

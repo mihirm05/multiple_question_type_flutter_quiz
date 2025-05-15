@@ -2,12 +2,14 @@
   {
     "questionText": "What is the capital of France?",
     "type": "multipleChoice",
+    "difficulty": "easy",
     "options": ["Paris", "London", "Berlin"],
     "correctAnswer": "Paris"
   },
   {
     "questionText": "Which animal is shown?",
     "type": "imageBased",
+    "difficulty": "easy",
     "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg",
     "options": ["Dog", "Cat", "Rabbit"],
     "correctAnswer": "Cat"
@@ -15,7 +17,36 @@
   {
     "questionText": "The Earth is flat.",
     "type": "trueFalse",
+    "difficulty": "easy",
     "options": ["True", "False"],
     "correctAnswer": "False"
+  },
+  {
+    "questionText": "What is the derivative of sin(x)?",
+    "type": "multipleChoice",
+    "difficulty": "medium",
+    "options": ["cos(x)", "-cos(x)", "-sin(x)"],
+    "correctAnswer": "cos(x)"
+  },
+  {
+    "questionText": "Water boils at 100°C at sea level.",
+    "type": "trueFalse",
+    "difficulty": "medium",
+    "options": ["True", "False"],
+    "correctAnswer": "True"
+  },
+  {
+    "questionText": "What’s the integral of 1/x?",
+    "type": "multipleChoice",
+    "difficulty": "hard",
+    "options": ["ln|x| + C", "x^2 / 2 + C", "1 / x + C"],
+    "correctAnswer": "ln|x| + C"
+  },
+  {
+    "questionText": "Which planet has the most moons?",
+    "type": "multipleChoice",
+    "difficulty": "hard",
+    "options": ["Saturn", "Jupiter", "Mars"],
+    "correctAnswer": "Saturn"
   }
 ]

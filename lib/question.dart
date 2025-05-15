@@ -1,15 +1,29 @@
 enum QuestionType { multipleChoice, imageBased, trueFalse }
+enum Difficulty { easy, medium, hard }
 
 QuestionType parseQuestionType(String value) {
-  switch (value) {
-    case 'multipleChoice':
+  switch (value.toLowerCase()) {
+    case 'multiplechoice':
       return QuestionType.multipleChoice;
-    case 'imageBased':
+    case 'imagebased':
       return QuestionType.imageBased;
-    case 'trueFalse':
+    case 'truefalse':
       return QuestionType.trueFalse;
     default:
-      throw Exception('Unknown question type: $value');
+      return QuestionType.multipleChoice;
+  }
+}
+
+Difficulty parseDifficulty(String value) {
+  switch (value.toLowerCase()) {
+    case 'easy':
+      return Difficulty.easy;
+    case 'medium':
+      return Difficulty.medium;
+    case 'hard':
+      return Difficulty.hard;
+    default:
+      return Difficulty.easy;
   }
 }
 
@@ -19,6 +33,7 @@ class Question {
   final List<String> options;
   final String correctAnswer;
   final String? imageUrl;
+  final Difficulty difficulty;
 
   Question({
     required this.questionText,
@@ -26,6 +41,7 @@ class Question {
     required this.options,
     required this.correctAnswer,
     this.imageUrl,
+    required this.difficulty,
   });
 
   factory Question.fromJson(Map<String, dynamic> json) {
@@ -35,6 +51,7 @@ class Question {
       options: List<String>.from(json['options']),
       correctAnswer: json['correctAnswer'],
       imageUrl: json['imageUrl'],
+      difficulty: parseDifficulty(json['difficulty'] ?? 'easy'),
     );
   }
 }
