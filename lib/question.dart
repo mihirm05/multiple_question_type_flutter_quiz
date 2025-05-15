@@ -1,5 +1,18 @@
 enum QuestionType { multipleChoice, imageBased, trueFalse }
 
+QuestionType parseQuestionType(String value) {
+  switch (value) {
+    case 'multipleChoice':
+      return QuestionType.multipleChoice;
+    case 'imageBased':
+      return QuestionType.imageBased;
+    case 'trueFalse':
+      return QuestionType.trueFalse;
+    default:
+      throw Exception('Unknown question type: $value');
+  }
+}
+
 class Question {
   final String questionText;
   final QuestionType type;
@@ -15,16 +28,13 @@ class Question {
     this.imageUrl,
   });
 
-  // Factory constructor to create True/False question easily
-  factory Question.trueFalse({
-    required String questionText,
-    required bool isTrue,
-  }) {
+  factory Question.fromJson(Map<String, dynamic> json) {
     return Question(
-      questionText: questionText,
-      type: QuestionType.trueFalse,
-      options: ['True', 'False'],
-      correctAnswer: isTrue ? 'True' : 'False',
+      questionText: json['questionText'],
+      type: parseQuestionType(json['type']),
+      options: List<String>.from(json['options']),
+      correctAnswer: json['correctAnswer'],
+      imageUrl: json['imageUrl'],
     );
   }
 }
