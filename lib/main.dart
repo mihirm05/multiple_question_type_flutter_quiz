@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:multiple_question_type_flutter_quiz/hexa_match.dart' as hexa;
 import 'package:multiple_question_type_flutter_quiz/question.dart';
 import 'package:multiple_question_type_flutter_quiz/quiz_provider.dart';
 import 'package:provider/provider.dart';
