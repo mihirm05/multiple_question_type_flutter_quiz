@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:multiple_question_type_flutter_quiz/hexa_match.dart' as hexa;
 import 'package:multiple_question_type_flutter_quiz/question.dart';
 import 'package:multiple_question_type_flutter_quiz/quiz_provider.dart';
 import 'package:provider/provider.dart';
@@ -47,6 +48,8 @@ class QuizScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int questionCounter = 0;
+    
     return Scaffold(
       appBar: AppBar(title: const Text('Adaptive Quiz')),
       body: Consumer<QuizProvider>(
@@ -67,14 +70,28 @@ class QuizScreen extends StatelessWidget {
           }
 
           final question = quiz.currentQuestion;
+          questionCounter += 1;
+          
 
           return Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                if (question.imageUrl != null)
-                  Image.network(question.imageUrl!, height: 200),
+                
+                /*
+                hexa.HexagonPathWidget(hexaInit: questionCounter == 1 ? true : false, 
+                                       patientAnswer: true, 
+                                       rivalAnswer: true, 
+                                       score: questionCounter, 
+                                       nextPage: '',
+                                       buttonPressed: true
+                                       ),
+                  */
+                  
+                question.imageUrl != null
+                  ? Image.network(question.imageUrl!, height: 200)
+                  : SizedBox(),
                 const SizedBox(height: 20),
                 Text(
                   question.questionText,
