@@ -1,0 +1,5 @@
+Task, ID, Item, text, image, audio
+1, 000001, Das ist das Auge, 1, 1, 1
+2, 000002, Das ist das Ohr, 2, 2, 2
+3, 000003, Das ist der Mund, 3, 3, 3, 3
+4, 000004, Das ist die Nase, 4, 4, 4, 4

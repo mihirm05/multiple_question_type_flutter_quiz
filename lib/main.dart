@@ -4,6 +4,7 @@ import 'package:flutter/services.dart' show rootBundle;
 import 'package:multiple_question_type_flutter_quiz/question.dart';
 import 'package:multiple_question_type_flutter_quiz/quiz_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:multiple_question_type_flutter_quiz/hexa_match.dart' as hexa;
 
 
 void main() {
@@ -70,7 +71,7 @@ class QuizScreen extends StatelessWidget {
 
           final question = quiz.currentQuestion;
           questionCounter += 1;
-          
+          print('questionCounter: $questionCounter');
 
           return Padding(
             padding: const EdgeInsets.all(16.0),
@@ -86,7 +87,7 @@ class QuizScreen extends StatelessWidget {
                                        nextPage: '',
                                        buttonPressed: true
                                        ),
-                  */
+                */
                   
                 question.imageUrl != null
                   ? Image.network(question.imageUrl!, height: 200)
