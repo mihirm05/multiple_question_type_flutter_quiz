@@ -1,52 +1,25 @@
-[
-  {
-    "questionText": "What is the capital of France?",
-    "type": "multipleChoice",
-    "difficulty": "easy",
-    "options": ["Paris", "London", "Berlin"],
-    "correctAnswer": "Paris"
+[ {"type": "comprehension",
+   "audioPrompt": "objectsAudio/3.mp3",
+   "difficulty": "easy",
+   "options": ["objects/3.png", "objects/2.png"],
+   "correctAnswer": "objects/3.png"
   },
-  {
-    "questionText": "Which animal is shown?",
-    "type": "imageBased",
-    "difficulty": "easy",
-    "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3a/Cat03.jpg",
-    "options": ["Dog", "Cat", "Rabbit"],
-    "correctAnswer": "Cat"
+  {"type": "comprehension",
+   "audioPrompt": "objectsAudio/2.mp3",
+   "difficulty": "easy",
+   "options": ["objects/2.png", "objects/3.png"],
+   "correctAnswer": "objects/2.png"
   },
-  {
-    "questionText": "The Earth is flat.",
-    "type": "trueFalse",
-    "difficulty": "easy",
-    "options": ["True", "False"],
-    "correctAnswer": "False"
+  {"type": "comprehension",
+   "audioPrompt": "objectsAudio/4.mp3",
+   "difficulty": "easy",
+   "options": ["objects/4.png", "objects/3.png"],
+   "correctAnswer": "objects/4.png"
   },
-  {
-    "questionText": "What is the derivative of sin(x)?",
-    "type": "multipleChoice",
-    "difficulty": "medium",
-    "options": ["cos(x)", "-cos(x)", "-sin(x)"],
-    "correctAnswer": "cos(x)"
-  },
-  {
-    "questionText": "Water boils at 100°C at sea level.",
-    "type": "trueFalse",
-    "difficulty": "medium",
-    "options": ["True", "False"],
-    "correctAnswer": "True"
-  },
-  {
-    "questionText": "What’s the integral of 1/x?",
-    "type": "multipleChoice",
-    "difficulty": "hard",
-    "options": ["ln|x| + C", "x^2 / 2 + C", "1 / x + C"],
-    "correctAnswer": "ln|x| + C"
-  },
-  {
-    "questionText": "Which planet has the most moons?",
-    "type": "multipleChoice",
-    "difficulty": "hard",
-    "options": ["Saturn", "Jupiter", "Mars"],
-    "correctAnswer": "Saturn"
+  {"type": "comprehension",
+   "audioPrompt": "objectsAudio/2.mp3",
+   "difficulty": "easy",
+   "options": ["objects/2.png", "objects/4.png"],
+   "correctAnswer": "objects/2.png"
   }
 ]
