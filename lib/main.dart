@@ -1,6 +1,9 @@
 import 'dart:convert';
+import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/services.dart';
+import 'package:multiple_question_type_flutter_quiz/config.dart' as config;
+import 'package:multiple_question_type_flutter_quiz/hexa_config.dart' as hexa_config;
 import 'package:multiple_question_type_flutter_quiz/question.dart';
 import 'package:multiple_question_type_flutter_quiz/quiz_provider.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +20,7 @@ class MyApp extends StatelessWidget {
   Future<List<Question>> loadQuestions() async {
     final String jsonString = await rootBundle.loadString('questions.json');
     final List<dynamic> jsonData = json.decode(jsonString);
+    print('jsonData: $jsonData');
     return jsonData.map((e) => Question.fromJson(e)).toList();
   }
 
@@ -48,10 +52,10 @@ class QuizScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int questionCounter = 0;
+    print('config.questionCounter: ${config.questionCounter}');
     
     return Scaffold(
-      appBar: AppBar(title: const Text('Adaptive Quiz')),
+      //appBar: AppBar(title: const Text('Adaptive Quiz')),
       body: Consumer<QuizProvider>(
         builder: (context, quiz, child) {
           if (quiz.isFinished) {
@@ -61,17 +65,24 @@ class QuizScreen extends StatelessWidget {
                 children: [
                   Text('Finished! Score: ${quiz.score}/${quiz.totalQuestions}'),
                   ElevatedButton(
-                    onPressed: () => quiz.reset(),
+                    onPressed: (){
+                      quiz.reset();
+                    },
                     child: const Text('Restart'),
                   ),
+                  
                 ],
               ),
             );
           }
 
+          Random random = Random();
+
           final question = quiz.currentQuestion;
-          questionCounter += 1;
-          print('questionCounter: $questionCounter');
+          config.questionCounter += 1;
+          List<bool> rivalBool = [true, false];
+          print('questionCounter: ${config.questionCounter}');
+
 
           return Padding(
             padding: const EdgeInsets.all(16.0),
@@ -79,29 +90,39 @@ class QuizScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 
-                /*
-                hexa.HexagonPathWidget(hexaInit: questionCounter == 1 ? true : false, 
-                                       patientAnswer: true, 
-                                       rivalAnswer: true, 
-                                       score: questionCounter, 
-                                       nextPage: '',
-                                       buttonPressed: true
-                                       ),
-                */
-                  
-                question.imageUrl != null
-                  ? Image.network(question.imageUrl!, height: 200)
-                  : SizedBox(),
-                const SizedBox(height: 20),
-                Text(
-                  question.questionText,
-                  style: const TextStyle(fontSize: 20),
+                
+                SizedBox(
+                  height: 5,
+                  width: 100,
+                  child: hexa.HexagonPathWidget(hexaInit: (config.questionCounter == 1) ? true : false,
+                                                patientAnswer: Provider.of<QuizProvider>(context).lastSelectedAnswer, 
+                                                rivalAnswer: rivalBool[random.nextInt(rivalBool.length)], 
+                                                score: config.questionCounter, 
+                                                buttonPressed: Provider.of<QuizProvider>(context).lastSelectedAnswer == null ? false : true,
+                                                ),
                 ),
-                const SizedBox(height: 20),
-                ...question.options.map((option) => ElevatedButton(
-                      onPressed: () => quiz.answer(option),
-                      child: Text(option),
-                    )),
+                                
+                SizedBox(height:500, width:500), 
+
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [...question.options.map((option) => 
+                  Column(
+                    children:[
+                      
+                      Row(children:[
+                        IconButton(
+                        onPressed: (){
+                          quiz.answer(option);
+                        },
+                        icon: Image.asset(option, height: 250, width: 250),
+                      ),
+                      ]
+                  )]
+                  )
+                    ),]),
+                
               ],
             ),
           );

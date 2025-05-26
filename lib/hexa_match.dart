@@ -17,7 +17,7 @@ class HexagonPathWidget extends StatefulWidget {
                     required this.patientAnswer,
                     required this.rivalAnswer,
                     required this.score,
-                    required this.nextPage,
+                    //required this.nextPage,
                     required this.buttonPressed
                    });
 
@@ -25,7 +25,6 @@ class HexagonPathWidget extends StatefulWidget {
   _HexagonPathWidgetState createState() => _HexagonPathWidgetState();
   bool? patientAnswer;
   bool? rivalAnswer;
-  String nextPage;
   int score;
   bool buttonPressed;
   
@@ -253,10 +252,12 @@ class _HexagonPathWidgetState extends State<HexagonPathWidget> {
     });
     _checkWinCondition(rivalMove.newPosition, 'rival');
     // navigate to a new page right at the end of makeMove
+    /*
     if(widget.buttonPressed){
       await Future.delayed(Duration(milliseconds: 900)); 
       Navigator.pushNamed(context, widget.nextPage);
     }
+    */
   }
 
   // Prüft, ob ein gegebener Token die Ziellinie überschritten hat.
@@ -341,30 +342,34 @@ class _HexagonPathWidgetState extends State<HexagonPathWidget> {
         double totalHeight = constraints.maxHeight;
         return Row(
           children: [
-            SizedBox(width: totalWidth * 0.05,
+            SizedBox(
+              width: totalWidth * 0.05,
               height: totalHeight * 0.4),
             // Linker Bereich: 10 % der Breite.
             Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  SizedBox(height: isPortrait ? MediaQuery.of(context).size.width*0.05 : MediaQuery.of(context).size.width*0.05, 
+                  /*SizedBox(height: isPortrait ? MediaQuery.of(context).size.width*0.05 : MediaQuery.of(context).size.width*0.05, 
                            width:  isPortrait ? MediaQuery.of(context).size.width*0.05 : MediaQuery.of(context).size.width*0.05, ),
-
+                  */
                   // Oben: Platzhalter für das Bild des Spielers (später durch PNG ersetzt).
-                  Image.asset(config.patientTherapist,
-                              height: isPortrait ? MediaQuery.of(context).size.width*0.045 : MediaQuery.of(context).size.width*0.045, 
-                              width:  isPortrait ? MediaQuery.of(context).size.width*0.045 : MediaQuery.of(context).size.width*0.045, 
+                  /*Image.asset(config.patientTherapist,
+                              height: isPortrait ? MediaQuery.of(context).size.width*0.035 : MediaQuery.of(context).size.width*0.035, 
+                              width:  isPortrait ? MediaQuery.of(context).size.width*0.035 : MediaQuery.of(context).size.width*0.035, 
                   ),
+                  */
+                  /*
                   SizedBox(height: isPortrait ? MediaQuery.of(context).size.width*0.01 : MediaQuery.of(context).size.width*0.01, 
                            width:  isPortrait ? MediaQuery.of(context).size.width*0.01 : MediaQuery.of(context).size.width*0.01, ),
-                  
+                  */
                   // Unten: Dynamischer Text, der die emotionale Stimmung des Rivalen anzeigt.
-                  Image.asset(
+                  /*Image.asset(
                     getRivalEmotion(),
-                    height: isPortrait ? MediaQuery.of(context).size.width*0.045 : MediaQuery.of(context).size.width*0.045, 
-                    width:  isPortrait ? MediaQuery.of(context).size.width*0.045 : MediaQuery.of(context).size.width*0.045, 
+                    height: isPortrait ? MediaQuery.of(context).size.width*0.035 : MediaQuery.of(context).size.width*0.035, 
+                    width:  isPortrait ? MediaQuery.of(context).size.width*0.035 : MediaQuery.of(context).size.width*0.035, 
 
                   ),
+                  */
                 ],
               ),
             
@@ -377,6 +382,7 @@ class _HexagonPathWidgetState extends State<HexagonPathWidget> {
                   Expanded(
                     child: Stack(
                       children: [
+                        
                         // CustomPaint zeichnet das Spielfeld, die Pfade und die Ziellinie.
                         CustomPaint(
                           painter: StaticHexagonPainter(
