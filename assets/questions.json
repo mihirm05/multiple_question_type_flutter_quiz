@@ -1,7 +1,0 @@
-[ {"type": "comprehension",
-   "audioPrompt": "objectsAudio/1.mp3",
-   "difficulty": "easy",
-   "options": ["objects/1.png", "objects/2.png"],
-   "correctAnswer": "objects/1.png"
-  }
-]

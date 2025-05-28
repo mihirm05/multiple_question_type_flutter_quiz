@@ -1,0 +1,32 @@
+{
+  "uuid": "A7b3K9d2",
+  "item_raw": "Hallo, wir sind die Familie Fischer.",
+  "speaker": "Julia",
+  "text_de": "Hallo, wir sind die Familie Fischer.",
+  "scene": "Mama, Papa, Ben, Emma, Opa und Oma stehen nebeneinander im Garten vor ihrem Haus. Alle lächeln.",
+  "story": "Besuch",
+  "created_at": "2025-05-20T11:53:10+02:00",
+  "translations": {
+    "en": "Hello, we are the Fischer family.",
+    "ar": "مرحبًا، نحن عائلة فيشر.",
+    "fr": "Bonjour, nous sommes la famille Fischer.",
+    "es": "Hola, somos la familia Fischer.",
+    "it": "Ciao, siamo la famiglia Fischer.",
+    "ru": "Здравствуйте, мы семья Фишер.",
+    "sv": "Hej, vi är familjen Fischer."
+  },
+  "filenames": {
+    "image": "A7b3K9d2.png",
+    "audio": {
+      "de": "A7b3K9d2_de.mp3",
+      "en": "A7b3K9d2_en.mp3",
+      "ar": "A7b3K9d2_ar.mp3",
+      "fr": "A7b3K9d2_fr.mp3",
+      "es": "A7b3K9d2_es.mp3",
+      "it": "A7b3K9d2_it.mp3",
+      "ru": "A7b3K9d2_ru.mp3",
+      "sv": "A7b3K9d2_sv.mp3"
+    }
+  },
+  "image_prompt": "Scene: Mama, Papa, Ben, Emma, Opa und Oma stehen nebeneinander im Garten vor ihrem Haus. Alle lächeln.\nCharacters: Daniel, Julia, Ben, Emma, Opa Paul, Oma Olga\n\nZeichne die Figuren im klassischen ligne claire-Stil, wie ihn Hergé in The Adventures of Tintin etabliert hat:\n– saubere, kräftige Linien (teils variierte Strichstärke)\n– flächige, leuchtend-kräftige Farben\n– keinerlei Schraffuren\n– weiche, sanft beleuchtete Schlagschatten\n– insgesamt zurückgenommener Kontrast\nDie Figuren sollen cartoonhaft, aber anatomisch glaubwürdig proportioniert sein.\nKein Text im Bild. Fallback-Background #FFFFFF."
+}

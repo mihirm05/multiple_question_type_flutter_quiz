@@ -1,0 +1,34 @@
+{
+  "uuid": "3g9k7z2x",
+  "item_raw": "Das sind Ben und Emma. Er ist ihr Bruder.",
+  "speaker": "Daniel",
+  "text_de": "Das sind Ben und Emma. Er ist ihr Bruder.",
+  "scene": "Szene im Garten. Ben und Emma stehen nebeneinander. Daniel und Lara stehen nebeneinander. Daniel zeigt auf Ben. Lara guckt auf Ben.",
+  "story": "Besuch",
+  "created_at": "2025-05-23T14:07:06+02:00",
+  "translations": {
+    "en": "These are Ben and Emma. He is her brother.",
+    "ar": "هذان هما بن وإيما. هو أخوها.",
+    "fr": "Voici Ben et Emma. Il est son frère.",
+    "es": "Estos son Ben y Emma. Él es su hermano.",
+    "it": "Questi sono Ben ed Emma. Lui è suo fratello.",
+    "ru": "Это Бен и Эмма. Он её брат.",
+    "sv": "Det här är Ben och Emma. Han är hennes bror.",
+    "el": "Αυτοί είναι ο Μπεν και η Έμμα. Αυτός είναι ο αδελφός της."
+  },
+  "filenames": {
+    "image": "3g9k7z2x.png",
+    "audio": {
+      "de": "3g9k7z2x_de.mp3",
+      "en": "3g9k7z2x_en.mp3",
+      "ar": "3g9k7z2x_ar.mp3",
+      "fr": "3g9k7z2x_fr.mp3",
+      "es": "3g9k7z2x_es.mp3",
+      "it": "3g9k7z2x_it.mp3",
+      "ru": "3g9k7z2x_ru.mp3",
+      "sv": "3g9k7z2x_sv.mp3",
+      "el": "3g9k7z2x_el.mp3"
+    }
+  },
+  "image_prompt": "Scene: Szene im Garten. Ben und Emma stehen nebeneinander. Daniel und Lara stehen nebeneinander. Daniel zeigt auf Ben. Lara guckt auf Ben.\nCharacters: Ben, Emma, Daniel, Lara\n\nZeichne die Figuren im klassischen ligne claire-Stil, wie ihn Hergé in The Adventures of Tintin etabliert hat:\n– saubere, kräftige Linien (teils variierte Strichstärke)\n– flächige, leuchtend-kräftige Farben\n– keinerlei Schraffuren\n– weiche, sanft beleuchtete Schlagschatten\n– insgesamt zurückgenommener Kontrast\nDie Figuren sollen cartoonhaft, aber anatomisch glaubwürdig proportioniert sein.\n\nKein Text im Bild. Fallback-Background #FFFFFF."
+}

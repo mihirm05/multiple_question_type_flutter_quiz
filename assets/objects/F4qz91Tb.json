@@ -1,0 +1,32 @@
+{
+  "uuid": "F4qz91Tb",
+  "item_raw": "Sie hat eine Brille",
+  "speaker": "Ben",
+  "text_de": "Sie hat eine Brille",
+  "scene": "Ben zeigt auf Emma. Emma hat eine große blaue Brille auf.",
+  "story": "Besuch",
+  "created_at": "2025-05-20T10:40:47+02:00",
+  "translations": {
+    "en": "She has glasses",
+    "ar": "لديها نظارات",
+    "fr": "Elle a des lunettes",
+    "es": "Ella tiene gafas",
+    "it": "Lei ha gli occhiali",
+    "ru": "У неё есть очки",
+    "sv": "Hon har glasögon"
+  },
+  "filenames": {
+    "image": "F4qz91Tb.png",
+    "audio": {
+      "de": "F4qz91Tb_de.mp3",
+      "en": "F4qz91Tb_en.mp3",
+      "ar": "F4qz91Tb_ar.mp3",
+      "fr": "F4qz91Tb_fr.mp3",
+      "es": "F4qz91Tb_es.mp3",
+      "it": "F4qz91Tb_it.mp3",
+      "ru": "F4qz91Tb_ru.mp3",
+      "sv": "F4qz91Tb_sv.mp3"
+    }
+  },
+  "image_prompt": "Scene: Ben zeigt auf Emma. Emma hat eine große blaue Brille auf.\nCharacters: Ben, Emma"
+}

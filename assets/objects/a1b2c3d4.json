@@ -1,0 +1,21 @@
+{
+  "uuid": "e39a8b7c",
+  "item": "hinter",
+  "speaker": "Ben",
+  "text_de": "Emma ist hinter dem Tisch",
+  "text_en": "Emma is behind the table",
+  "text_ar": "إيما خلف الطاولة",
+  "text_fr": "Emma est derrière la table",
+  "text_sp": "Emma está detrás de la mesa",
+  "text_it": "Emma è dietro il tavolo",
+  "scene": "Emma und Ben sind in der Küche. Emma steht hinter dem Tisch, Ben davor. Ben zeigt auf Emma und sagt \"Emma ist hinter dem Tisch\"",
+  "image": "e39a8b7c.jpg",
+  "voice_de": "e39a8b7c_de.mp3",
+  "voice_en": "e39a8b7c_en.mp3",
+  "voice_ar": "e39a8b7c_ar.mp3",
+  "voice_fr": "e39a8b7c_fr.mp3",
+  "voice_sp": "e39a8b7c_sp.mp3",
+  "voice_it": "e39a8b7c_it.mp3",
+  "image_prompt": "In a bright kitchen with cartoon-style furniture, Baby Ben stands in front of a table pointing behind it with a cheeky smile. Behind the table, Emma stands with her hands in her pockets, looking amused. Draw characters in the classic ligne claire style pioneered by Hergé. Use clean lines, flat colors, soft shadows. Background transparent. Close-up shot focusing on the interaction between Emma and Ben near the table.",
+  "voice_prompt": "Ben: A slow and articulate, but high-pitched, comic strip style soft and clear German voice with flawless pronunciation. It sounds cheeky, curious, and full of energy, with a playful and slightly mischievous tone. The intonation rises expressively, often with a teasing or knowing edge, as if the speaker is making fun in a friendly way. The delivery is dynamic, adding personality and charm while keeping every word easy to understand. Text: \"Emma ist hinter dem Tisch\""
+}

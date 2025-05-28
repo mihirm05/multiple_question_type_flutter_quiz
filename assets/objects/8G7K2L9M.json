@@ -1,0 +1,32 @@
+{
+  "uuid": "8G7K2L9M",
+  "item_raw": "Ich habe eine Brille",
+  "speaker": "Ben",
+  "text_de": "Ich habe eine Brille",
+  "scene": "Ben hat eine große rote Brille auf und zeigt mit dem Finger darauf",
+  "story": "Besuch",
+  "created_at": "2025-05-20T10:39:01+02:00",
+  "translations": {
+    "en": "I have glasses",
+    "ar": "لدي نظارات",
+    "fr": "J'ai des lunettes",
+    "es": "Tengo gafas",
+    "it": "Ho gli occhiali",
+    "ru": "У меня есть очки",
+    "sv": "Jag har glasögon"
+  },
+  "filenames": {
+    "image": "8G7K2L9M.png",
+    "audio": {
+      "de": "8G7K2L9M_de.mp3",
+      "en": "8G7K2L9M_en.mp3",
+      "ar": "8G7K2L9M_ar.mp3",
+      "fr": "8G7K2L9M_fr.mp3",
+      "es": "8G7K2L9M_es.mp3",
+      "it": "8G7K2L9M_it.mp3",
+      "ru": "8G7K2L9M_ru.mp3",
+      "sv": "8G7K2L9M_sv.mp3"
+    }
+  },
+  "image_prompt": "Scene: Ben hat eine große rote Brille auf und zeigt mit dem Finger darauf\nCharacters: Ben"
+}

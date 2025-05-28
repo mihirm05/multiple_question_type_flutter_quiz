@@ -1,0 +1,31 @@
+{
+  "uuid": "A7b3X9kL",
+  "item_raw": "Hallo",
+  "speaker": "Lara",
+  "text_de": "Hallo – Guten Tag",
+  "scene": "Lara steht auf der Straße vor dem Gartentor. Hinter dem Gartentor im Garten steht Julia. Julia freut sich über Lara. Lara lächelt und winkt Julia zu.",
+  "story": "Besuch",
+  "translations": {
+    "en": "Hello – Good day",
+    "ar": "مرحبًا – طاب يومك",
+    "fr": "Bonjour – Bonne journée",
+    "es": "Hola – Buen día",
+    "it": "Ciao – Buona giornata",
+    "ru": "Привет – Добрый день",
+    "sv": "Hej – God dag"
+  },
+  "filenames": {
+    "image": "A7b3X9kL.png",
+    "audio": {
+      "de": "A7b3X9kL_de.mp3",
+      "en": "A7b3X9kL_en.mp3",
+      "ar": "A7b3X9kL_ar.mp3",
+      "fr": "A7b3X9kL_fr.mp3",
+      "es": "A7b3X9kL_es.mp3",
+      "it": "A7b3X9kL_it.mp3",
+      "ru": "A7b3X9kL_ru.mp3",
+      "sv": "A7b3X9kL_sv.mp3"
+    }
+  },
+  "image_prompt": "Scene: Lara steht auf der Straße vor dem Gartentor. Hinter dem Gartentor im Garten steht Julia. Julia freut sich über Lara. Lara lächelt und winkt Julia zu.\nCharacters: Lara, Julia"
+}
