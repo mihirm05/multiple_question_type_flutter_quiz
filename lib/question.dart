@@ -26,6 +26,7 @@ Difficulty parseDifficulty(String value) {
 }
 
 class Question {
+  final String audioPrompt;
   final QuestionType type;
   final List<String> options;
   final String correctAnswer;
@@ -33,6 +34,7 @@ class Question {
   final Difficulty difficulty;
 
   Question({
+    required this.audioPrompt,
     required this.type,
     required this.options,
     required this.correctAnswer,
@@ -40,6 +42,7 @@ class Question {
     required this.difficulty,
   });
 
+  /*
   factory Question.fromJson(Map<String, dynamic> json) {
     return Question(
       type: parseQuestionType(json['type']),
@@ -49,4 +52,5 @@ class Question {
       difficulty: parseDifficulty(json['difficulty'] ?? 'easy'),
     );
   }
+  */
 }
