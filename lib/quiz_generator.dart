@@ -13,11 +13,12 @@ Future<Map<int, String>> loadIndexToUuidMap() async {
 
 Future<List<Question>> generateComprehensionQuestions(Map<int, String> indexToUuid) async {
   List<Question> questions = [];
+  int numberOfItems = 8;
 
-  for (int i = 1; i <= 8; i++) {
+  for (int i = 1; i <=numberOfItems; i++) {
     int contrast;
     if (i <= 5) {
-      List<int> candidates = List.generate(5, (j) => i + j + 1).where((x) => x <= 10).toList();
+      List<int> candidates = List.generate(5, (j) => i + j + 1).where((x) => x <= numberOfItems).toList();
       contrast = (candidates..shuffle()).first;
     } else {
       List<int> candidates = List.generate(5, (j) => i - j - 1).where((x) => x >= 1).toList();
@@ -30,6 +31,11 @@ Future<List<Question>> generateComprehensionQuestions(Map<int, String> indexToUu
     String audioPath = 'audioObjects/$mainId.mp3';
     String correctImage = 'objects/$mainId.png';
     String contrastImage = 'objects/$contrastId.png';
+
+    //print('audioPath: $audioPath');
+    //print('correctImage: $correctImage');
+    //print('contrastImage: $contrastImage');
+    //print('xxxxxxxx');
 
     List<String> opts = [correctImage, contrastImage]..shuffle();
 

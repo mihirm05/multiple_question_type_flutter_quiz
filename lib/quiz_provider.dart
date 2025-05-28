@@ -34,6 +34,10 @@ class QuizProvider extends ChangeNotifier {
   void answer(String selected) async{
   if (_currentQuestion == null) return;
 
+  print('selected: $selected');
+  print('correctAnswer: ${_currentQuestion!.correctAnswer}');
+  print('xxxxxxxxxxx');
+
   
   if (selected == _currentQuestion!.correctAnswer) {
     score++;
