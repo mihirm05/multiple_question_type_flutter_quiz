@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:multiple_question_type_flutter_quiz/config.dart' as config;
 import 'question.dart';
-import 'package:multiple_question_type_flutter_quiz/hexa_match.dart' as hexa_match;
 import 'package:multiple_question_type_flutter_quiz/hexa_config.dart' as hexa_config;
 import 'dart:math';
 
@@ -15,6 +14,8 @@ class QuizProvider extends ChangeNotifier {
   final Map<Question, int> askedCounts = {};
 
   int score = 0;
+  bool _isTransitioning = false;
+  bool get isTransitioning => _isTransitioning;
 
   bool? _lastSelectedAnswer;
   bool? get lastSelectedAnswer => _lastSelectedAnswer;
@@ -24,6 +25,7 @@ class QuizProvider extends ChangeNotifier {
   Question get currentQuestion => _currentQuestion!;
   //bool get isFinished => _currentQuestion == null && askedQuestions.length == allQuestions.length;
   bool get isFinished => allQuestions.every((q) => (askedCounts[q] ?? 0) >= config.repeatCount);
+
 
   QuizProvider(this.allQuestions) {
     _pickNextQuestion();
@@ -45,14 +47,21 @@ class QuizProvider extends ChangeNotifier {
   //askedQuestions.add(_currentQuestion!);
   askedCounts[_currentQuestion!] = (askedCounts[_currentQuestion!] ?? 0) + 1;
 
+  //Trigger visual update
   notifyListeners();
 
-  await Future.delayed(Duration.zero); // lets UI update immediately
-  await Future.delayed(const Duration(milliseconds: 1500)); // pause after visual update
+  //allow the widget to update first
+  await Future.delayed(Duration.zero);
+  //show the transition
+  _isTransitioning = true;
+  //notifyListeners(); 
+
+  await Future.delayed(const Duration(milliseconds: 750)); // pause after visual update
 
   _pickNextQuestion();
   _lastSelectedAnswer = null; // Reset state if needed
-  notifyListeners();
+  _isTransitioning = false;
+  //notifyListeners();
 }
 
   void _pickNextQuestion() async {
@@ -63,7 +72,6 @@ class QuizProvider extends ChangeNotifier {
     List<Question> remaining = allQuestions.where((q) {
       return (askedCounts[q] ?? 0) < config.repeatCount;
     }).toList();
-
 
     if (remaining.isEmpty) {
       _currentQuestion = null;
@@ -78,7 +86,6 @@ class QuizProvider extends ChangeNotifier {
     //double accuracy = askedQuestions.isEmpty ? 0 : score / askedQuestions.length;
     double accuracy = totalAsked == 0 ? 0 : score / totalAsked;
 
-
     if (accuracy >= 0.8) {
       nextLevel = Difficulty.hard;
     } else if (accuracy >= 0.5) {
@@ -92,6 +99,8 @@ class QuizProvider extends ChangeNotifier {
 
     //_currentQuestion = (filtered.isNotEmpty ? filtered : remaining).first;
     _currentQuestion = pool[_random.nextInt(pool.length)];
+    // shuffle options here so UI uses the jumbled order
+    _currentQuestion?.options.shuffle();
     
   }
 
