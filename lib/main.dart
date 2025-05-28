@@ -3,8 +3,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:multiple_question_type_flutter_quiz/config.dart' as config;
-import 'package:multiple_question_type_flutter_quiz/hexa_config.dart' as hexa_config;
 import 'package:multiple_question_type_flutter_quiz/question.dart';
+import 'package:multiple_question_type_flutter_quiz/quiz_generator.dart';
 import 'package:multiple_question_type_flutter_quiz/quiz_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:multiple_question_type_flutter_quiz/hexa_match.dart' as hexa;
@@ -18,11 +18,14 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   Future<List<Question>> loadQuestions() async {
-    final String jsonString = await rootBundle.loadString('questions.json');
-    final List<dynamic> jsonData = json.decode(jsonString);
-    print('jsonData: $jsonData');
-    return jsonData.map((e) => Question.fromJson(e)).toList();
-  }
+  final String jsonString = await rootBundle.loadString('questions_mapping.json');
+  final Map<String, dynamic> jsonMap = json.decode(jsonString);
+  final Map<int, String> indexToUuid =
+      jsonMap.map((key, value) => MapEntry(int.parse(key), value as String));
+  //print('indexToUuid: $indexToUuid');
+
+  return generateComprehensionQuestions(indexToUuid);
+}
 
   @override
   Widget build(BuildContext context) {
@@ -52,7 +55,10 @@ class QuizScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('config.questionCounter: ${config.questionCounter}');
+    double deviceWidth = MediaQuery.of(context).size.width;
+    double deviceHeight = MediaQuery.of(context).size.height;
+
+    bool isPortrait = MediaQuery.of(context).orientation == Orientation.portrait;
     
     return Scaffold(
       //appBar: AppBar(title: const Text('Adaptive Quiz')),
@@ -79,10 +85,10 @@ class QuizScreen extends StatelessWidget {
           Random random = Random();
 
           final question = quiz.currentQuestion;
+
           config.questionCounter += 1;
           List<bool> rivalBool = [true, false];
-          print('questionCounter: ${config.questionCounter}');
-
+          //print('questionCounter: ${config.questionCounter}');
 
           return Padding(
             padding: const EdgeInsets.all(16.0),
@@ -102,7 +108,8 @@ class QuizScreen extends StatelessWidget {
                                                 ),
                 ),
                                 
-                SizedBox(height:500, width:500), 
+                SizedBox(width: isPortrait ? deviceWidth*0.10 : deviceHeight*0.10,
+                         height: isPortrait ? deviceHeight*0.10 : deviceWidth*0.10,), 
 
                 Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
@@ -110,19 +117,25 @@ class QuizScreen extends StatelessWidget {
                   children: [...question.options.map((option) => 
                   Column(
                     children:[
-                      
+          
                       Row(children:[
                         IconButton(
-                        onPressed: (){
-                          quiz.answer(option);
-                        },
-                        icon: Image.asset(option, height: 250, width: 250),
+                          padding: EdgeInsets.zero, // removes default 8.0 padding
+                          constraints: BoxConstraints(
+                            minWidth: 10,
+                            minHeight: 10,
+                          ), // reduce button size
+                          onPressed: (){
+                            quiz.answer(option);
+                          },
+                          icon: Image.asset(option, 
+                                          width: isPortrait ? deviceWidth*0.3 : deviceHeight*0.3,
+                                          height: isPortrait ? deviceHeight*0.3 : deviceWidth*0.3,),
                       ),
                       ]
                   )]
                   )
                     ),]),
-                
               ],
             ),
           );
