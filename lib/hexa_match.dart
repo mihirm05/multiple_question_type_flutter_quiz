@@ -325,10 +325,10 @@ class _HexagonPathWidgetState extends State<HexagonPathWidget> {
 
       playerState = HexState.Start;
       rivalState = HexState.Start;
-      print('playerPath: $playerPath');
-      print('rivalPath: $rivalPath');
-      print('playerState: $playerState');
-      print('rivalPath: $rivalState');
+      //print('playerPath: $playerPath');
+      //print('rivalPath: $rivalPath');
+      //print('playerState: $playerState');
+      //print('rivalPath: $rivalState');
     }
     
     if(widget.buttonPressed){
